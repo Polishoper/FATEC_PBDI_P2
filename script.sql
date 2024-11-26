@@ -80,7 +80,14 @@ AS $$
 $$
 
 -- EXERCICIO 3
-
+CREATE OR REPLACE PROCEDURE sp_aprovados_sozinho(
+    OUT v_aprovado INT
+) LANGUAGE plpgsql
+AS $$
+    BEGIN
+        v_aprovado := COUNT(ID_S) FROM student_p2 WHERE PREP_STUDY = 1 AND GRADE > 0;
+    END;
+$$
 
 -- EXERCICIO 4
 
