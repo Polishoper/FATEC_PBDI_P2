@@ -69,14 +69,13 @@ ALTER TABLE student_predict DROP COLUMN COURSE;
 ALTER TABLE student_predict DROP COLUMN GRADE;
 
 -- EXERCICIO 2
-CREATE OR REPLACE PROCEDURE sp_criar_pedido(
-    OUT p_cod_pedido INT,
-    IN p_cod_cliente INT
+CREATE OR REPLACE PROCEDURE sp_aprovados_pais_phds(
+    OUT v_res INT
 ) LANGUAGE plpgsql
 AS $$
     BEGIN
-        INSERT INTO tb_pedido(cod_cliente) VALUES (p_cod_cliente);
-        SELECT LASTVAL() INTO p_cod_pedido;
+        v_res := COUNT(ID_S) FROM student_p2 WHERE father_edu = 6 AND mother_edu = 6 AND GRADE > 0;
+        RAISE NOTICE '%', v_res;
     END;
 $$
 
