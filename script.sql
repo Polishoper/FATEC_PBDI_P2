@@ -90,6 +90,16 @@ AS $$
 $$
 
 -- EXERCICIO 4
-
+CREATE OR REPLACE FUNCTION fn_alunos_salario_estudos(
+) RETURNS INT
+    LANGUAGE plpgsql AS $$
+    DECLARE
+        v_resultado INT;
+    BEGIN
+        SELECT COUNT(ID_S) FROM student_p2 WHERE prep_exam = 2 AND salary = 5 
+        INTO v_resultado;
+        RETURN v_resultado;
+    END;
+    $$;
 
 -- EXERCICIO 5
